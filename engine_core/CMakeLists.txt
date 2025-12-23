@@ -83,6 +83,8 @@ add_library(engine_core STATIC
     # Audio
     src/audio/audio_manager.cpp
     src/audio/miniaudio_impl.cpp
+    src/audio/voice_manifest.cpp
+    src/audio/audio_recorder.cpp
 
     # Save
     src/save/save_manager.cpp
