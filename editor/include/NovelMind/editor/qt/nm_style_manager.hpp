@@ -21,42 +21,153 @@
 namespace NovelMind::editor::qt {
 
 /**
+ * @brief Spacing constants for consistent layout rhythm
+ */
+struct SpacingTokens {
+  int xxs = 2;   // Extra extra small
+  int xs = 4;    // Extra small
+  int sm = 8;    // Small
+  int md = 12;   // Medium
+  int lg = 16;   // Large
+  int xl = 24;   // Extra large
+  int xxl = 32;  // Extra extra large
+  int xxxl = 48; // Triple extra large
+};
+
+/**
+ * @brief Border radius constants
+ */
+struct RadiusTokens {
+  int none = 0;
+  int sm = 2;
+  int md = 4;
+  int lg = 6;
+  int xl = 8;
+  int full = 9999; // For pills/circles
+};
+
+/**
+ * @brief Typography sizes
+ */
+struct TypographyTokens {
+  int captionSize = 8;
+  int smallSize = 9;
+  int bodySize = 10;
+  int labelSize = 11;
+  int subtitleSize = 12;
+  int titleSize = 14;
+  int headingSize = 18;
+  int displaySize = 24;
+};
+
+/**
+ * @brief Panel-specific accent colors for visual identity
+ */
+struct PanelAccents {
+  QColor sceneView{0x2e, 0xc4, 0xb6};      // Teal
+  QColor storyGraph{0x6a, 0xa6, 0xff};     // Blue
+  QColor inspector{0xf0, 0xb2, 0x4a};      // Orange/Gold
+  QColor assetBrowser{0x5f, 0xd1, 0x8a};   // Green
+  QColor scriptEditor{0xff, 0x9b, 0x66};   // Coral
+  QColor console{0x8e, 0xa1, 0xb5};        // Gray-blue
+  QColor playToolbar{0x48, 0xc7, 0x6e};    // Bright green
+  QColor timeline{0x9f, 0x7a, 0xea};       // Purple
+  QColor curveEditor{0xe8, 0x6a, 0x92};    // Pink
+  QColor voiceManager{0x4a, 0xc1, 0xd6};   // Cyan
+  QColor localization{0xff, 0xc1, 0x07};   // Yellow
+  QColor diagnostics{0xe1, 0x4e, 0x43};    // Red (for warnings/errors)
+  QColor hierarchy{0x7c, 0xb3, 0x42};      // Lime
+  QColor scenePalette{0xd6, 0x8f, 0xd6};   // Lavender
+};
+
+/**
  * @brief Color palette for the editor theme
  */
 struct EditorPalette {
-  // Background colors
-  QColor bgDarkest{0x0f, 0x12, 0x16}; // Main background
-  QColor bgDark{0x16, 0x1b, 0x22};    // Panel backgrounds
-  QColor bgMedium{0x1f, 0x26, 0x30};  // Widget backgrounds
-  QColor bgLight{0x2a, 0x32, 0x3f};   // Hover states
+  // =========================================================================
+  // BACKGROUND COLORS (Layered surfaces)
+  // =========================================================================
+  QColor bgDarkest{0x0d, 0x10, 0x14}; // Base background (deepest layer)
+  QColor bgDark{0x14, 0x18, 0x1e};    // Panel backgrounds
+  QColor bgMedium{0x1c, 0x21, 0x29};  // Elevated surfaces (cards, inputs)
+  QColor bgLight{0x26, 0x2d, 0x38};   // Hover states
+  QColor bgElevated{0x2e, 0x36, 0x43}; // Popups, dropdowns, tooltips
 
-  // Text colors
-  QColor textPrimary{0xe7, 0xec, 0xf2};   // Primary text
-  QColor textSecondary{0xa3, 0xae, 0xbd}; // Secondary text
-  QColor textDisabled{0x6b, 0x74, 0x82};  // Disabled text
+  // =========================================================================
+  // TEXT COLORS
+  // =========================================================================
+  QColor textPrimary{0xe8, 0xed, 0xf3};   // Primary text (high contrast)
+  QColor textSecondary{0x9a, 0xa7, 0xb8}; // Secondary/hint text
+  QColor textMuted{0x6c, 0x76, 0x84};     // Muted/placeholder text
+  QColor textDisabled{0x4a, 0x52, 0x5e};  // Disabled text
+  QColor textInverse{0x0d, 0x10, 0x14};   // Text on light backgrounds
 
-  // Accent colors
-  QColor accentPrimary{0x2f, 0x9b, 0xff}; // Selection, focus
-  QColor accentHover{0x59, 0xb6, 0xff};   // Hover state
-  QColor accentActive{0x22, 0x7d, 0xd6};  // Active state
+  // =========================================================================
+  // ACCENT COLORS (Primary brand)
+  // =========================================================================
+  QColor accentPrimary{0x3b, 0x9e, 0xff}; // Selection, focus, links
+  QColor accentHover{0x5c, 0xb3, 0xff};   // Hover state
+  QColor accentActive{0x28, 0x82, 0xe0};  // Active/pressed state
+  QColor accentSubtle{0x1a, 0x3a, 0x5c};  // Subtle accent background
 
-  // Status colors
-  QColor error{0xe1, 0x4e, 0x43};
-  QColor warning{0xf2, 0xa2, 0x3a};
-  QColor success{0x35, 0xc0, 0x7f};
-  QColor info{0x4a, 0x92, 0xff};
+  // =========================================================================
+  // SEMANTIC/STATUS COLORS
+  // =========================================================================
+  QColor error{0xe5, 0x4d, 0x42};        // Error states
+  QColor errorSubtle{0x3a, 0x1f, 0x1f};  // Error background
+  QColor warning{0xf5, 0xa6, 0x23};      // Warning states
+  QColor warningSubtle{0x3a, 0x32, 0x1a};// Warning background
+  QColor success{0x3d, 0xc9, 0x7e};      // Success states
+  QColor successSubtle{0x1a, 0x3a, 0x2a};// Success background
+  QColor info{0x4a, 0x9e, 0xff};         // Info states
+  QColor infoSubtle{0x1a, 0x2a, 0x3a};   // Info background
 
-  // Border colors
-  QColor borderDark{0x0c, 0x10, 0x14};
-  QColor borderLight{0x35, 0x3d, 0x49};
+  // =========================================================================
+  // BORDER COLORS
+  // =========================================================================
+  QColor borderDark{0x0a, 0x0d, 0x10};   // Strong borders
+  QColor borderDefault{0x2a, 0x32, 0x3e}; // Default borders
+  QColor borderLight{0x38, 0x42, 0x50};  // Subtle borders
+  QColor borderFocus{0x3b, 0x9e, 0xff};  // Focus ring
 
-  // Graph/Node specific colors
-  QColor nodeDefault{0x2a, 0x2f, 0x37};
+  // =========================================================================
+  // GRAPH/NODE SPECIFIC COLORS
+  // =========================================================================
+  QColor nodeDefault{0x28, 0x2e, 0x38};
   QColor nodeSelected{0x2d, 0x7c, 0xcf};
-  QColor nodeHover{0x34, 0x3a, 0x44};
-  QColor connectionLine{0x66, 0x71, 0x7f};
-  QColor gridLine{0x23, 0x28, 0x31};
-  QColor gridMajor{0x2f, 0x35, 0x3f};
+  QColor nodeHover{0x32, 0x3a, 0x46};
+  QColor nodeExecution{0x48, 0xc7, 0x6e}; // Execution flow highlight
+  QColor connectionLine{0x5a, 0x66, 0x74};
+  QColor connectionActive{0x3b, 0x9e, 0xff};
+  QColor gridLine{0x1e, 0x24, 0x2c};
+  QColor gridMajor{0x2a, 0x32, 0x3c};
+
+  // =========================================================================
+  // TIMELINE/KEYFRAME COLORS
+  // =========================================================================
+  QColor keyframeDefault{0x5c, 0xb3, 0xff};
+  QColor keyframeSelected{0xff, 0xc1, 0x07};
+  QColor keyframeTangent{0x9f, 0x7a, 0xea};
+  QColor playhead{0xe5, 0x4d, 0x42};
+  QColor timelineTrack{0x1c, 0x21, 0x29};
+  QColor timelineTrackAlt{0x22, 0x28, 0x32};
+
+  // =========================================================================
+  // AUDIO/WAVEFORM COLORS
+  // =========================================================================
+  QColor waveformFill{0x3b, 0x9e, 0xff};
+  QColor waveformStroke{0x5c, 0xb3, 0xff};
+  QColor waveformBackground{0x14, 0x18, 0x1e};
+  QColor recordingActive{0xe5, 0x4d, 0x42};
+
+  // =========================================================================
+  // SPECIAL UI ELEMENTS
+  // =========================================================================
+  QColor scrollbarThumb{0x3a, 0x44, 0x52};
+  QColor scrollbarThumbHover{0x4a, 0x56, 0x66};
+  QColor scrollbarTrack{0x14, 0x18, 0x1e};
+  QColor dragHighlight{0x3b, 0x9e, 0xff};
+  QColor dropZone{0x1a, 0x3a, 0x5c};
 };
 
 /**
@@ -86,6 +197,26 @@ public:
    * @brief Get the current color palette
    */
   [[nodiscard]] const EditorPalette &palette() const { return m_palette; }
+
+  /**
+   * @brief Get spacing tokens
+   */
+  [[nodiscard]] const SpacingTokens &spacing() const { return m_spacing; }
+
+  /**
+   * @brief Get border radius tokens
+   */
+  [[nodiscard]] const RadiusTokens &radius() const { return m_radius; }
+
+  /**
+   * @brief Get typography tokens
+   */
+  [[nodiscard]] const TypographyTokens &typography() const { return m_typography; }
+
+  /**
+   * @brief Get panel accent colors
+   */
+  [[nodiscard]] const PanelAccents &panelAccents() const { return m_panelAccents; }
 
   /**
    * @brief Get the default font for the editor
@@ -157,6 +288,10 @@ private:
 
   QApplication *m_app = nullptr;
   EditorPalette m_palette;
+  SpacingTokens m_spacing;
+  RadiusTokens m_radius;
+  TypographyTokens m_typography;
+  PanelAccents m_panelAccents;
   QFont m_defaultFont;
   QFont m_monospaceFont;
   double m_uiScale = 1.0;

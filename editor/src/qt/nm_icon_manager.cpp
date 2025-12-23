@@ -690,6 +690,345 @@ void NMIconManager::initializeIcons() {
       "2.8 4 5v2z'/>"
       "<circle fill='#2d2d2d' cx='8' cy='10.5' r='1'/>"
       "</svg>";
+
+  // =========================================================================
+  // AUDIO ICONS (Voice Manager, Recording, Playback)
+  // =========================================================================
+  m_iconSvgData["audio-record"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<circle fill='%COLOR%' cx='8' cy='8' r='6'/>"
+      "</svg>";
+
+  m_iconSvgData["audio-waveform"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<rect fill='%COLOR%' x='1' y='6' width='2' height='4' rx='0.5'/>"
+      "<rect fill='%COLOR%' x='4' y='4' width='2' height='8' rx='0.5'/>"
+      "<rect fill='%COLOR%' x='7' y='2' width='2' height='12' rx='0.5'/>"
+      "<rect fill='%COLOR%' x='10' y='5' width='2' height='6' rx='0.5'/>"
+      "<rect fill='%COLOR%' x='13' y='6' width='2' height='4' rx='0.5'/>"
+      "</svg>";
+
+  m_iconSvgData["audio-mute"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<path fill='%COLOR%' d='M9 2L5 6H2v4h3l4 4V2z'/>"
+      "<path fill='%COLOR%' stroke='%COLOR%' stroke-width='1.5' d='M12 5l4 6M16 5l-4 6'/>"
+      "</svg>";
+
+  m_iconSvgData["audio-unmute"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<path fill='%COLOR%' d='M9 2L5 6H2v4h3l4 4V2z'/>"
+      "<path fill='none' stroke='%COLOR%' stroke-width='1.5' d='M11 5c1 1 1 5 0 6'/>"
+      "<path fill='none' stroke='%COLOR%' stroke-width='1.5' d='M13 3c2 2.5 2 7.5 0 10'/>"
+      "</svg>";
+
+  m_iconSvgData["audio-volume-low"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<path fill='%COLOR%' d='M9 2L5 6H2v4h3l4 4V2z'/>"
+      "<path fill='none' stroke='%COLOR%' stroke-width='1.5' d='M11 5c1 1 1 5 0 6'/>"
+      "</svg>";
+
+  m_iconSvgData["audio-volume-high"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<path fill='%COLOR%' d='M9 2L5 6H2v4h3l4 4V2z'/>"
+      "<path fill='none' stroke='%COLOR%' stroke-width='1.5' d='M11 5c1 1 1 5 0 6'/>"
+      "<path fill='none' stroke='%COLOR%' stroke-width='1.5' d='M13 3c2 2.5 2 7.5 0 10'/>"
+      "</svg>";
+
+  m_iconSvgData["microphone"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<rect fill='%COLOR%' x='6' y='1' width='4' height='8' rx='2'/>"
+      "<path fill='%COLOR%' d='M3 6v2c0 2.8 2.2 5 5 5s5-2.2 5-5V6h-1v2c0 2.2-1.8 4-4 "
+      "4s-4-1.8-4-4V6H3z'/>"
+      "<rect fill='%COLOR%' x='7.5' y='13' width='1' height='2'/>"
+      "<rect fill='%COLOR%' x='5' y='14' width='6' height='1'/>"
+      "</svg>";
+
+  m_iconSvgData["microphone-off"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<rect fill='%COLOR%' x='6' y='1' width='4' height='8' rx='2'/>"
+      "<path fill='%COLOR%' d='M3 6v2c0 2.8 2.2 5 5 5s5-2.2 5-5V6h-1v2c0 2.2-1.8 4-4 "
+      "4s-4-1.8-4-4V6H3z'/>"
+      "<path fill='#e54d42' stroke='#e54d42' stroke-width='1.5' d='M2 2l12 12'/>"
+      "</svg>";
+
+  // =========================================================================
+  // LOCALIZATION ICONS (Languages, Translation, Keys)
+  // =========================================================================
+  m_iconSvgData["language"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<circle fill='none' stroke='%COLOR%' stroke-width='1.5' cx='8' cy='8' r='6'/>"
+      "<ellipse fill='none' stroke='%COLOR%' stroke-width='1' cx='8' cy='8' rx='3' ry='6'/>"
+      "<path fill='none' stroke='%COLOR%' stroke-width='1' d='M2 8h12'/>"
+      "<path fill='none' stroke='%COLOR%' stroke-width='1' d='M3 5h10M3 11h10'/>"
+      "</svg>";
+
+  m_iconSvgData["translate"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<text fill='%COLOR%' x='3' y='10' font-size='8' font-weight='bold'>A</text>"
+      "<path fill='none' stroke='%COLOR%' stroke-width='1.5' d='M7 8l2 0'/>"
+      "<text fill='%COLOR%' x='9' y='12' font-size='6'>文</text>"
+      "</svg>";
+
+  m_iconSvgData["locale-missing"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<circle fill='none' stroke='%COLOR%' stroke-width='1.5' cx='8' cy='8' r='6'/>"
+      "<path fill='%COLOR%' d='M7.5 4h1v5h-1z'/>"
+      "<circle fill='%COLOR%' cx='8' cy='11' r='0.8'/>"
+      "</svg>";
+
+  m_iconSvgData["locale-key"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<rect fill='%COLOR%' x='2' y='4' width='12' height='8' rx='1'/>"
+      "<rect fill='#1c2129' x='4' y='6' width='8' height='4' rx='0.5'/>"
+      "<text fill='%COLOR%' x='8' y='9.5' font-size='5' text-anchor='middle' "
+      "font-family='monospace'>key</text>"
+      "</svg>";
+
+  m_iconSvgData["locale-add"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<circle fill='none' stroke='%COLOR%' stroke-width='1.5' cx='7' cy='7' r='5'/>"
+      "<path fill='%COLOR%' d='M12 10h2v2h2v2h-2v2h-2v-2h-2v-2h2z'/>"
+      "</svg>";
+
+  // =========================================================================
+  // TIMELINE ICONS (Keyframes, Playback, Snapping)
+  // =========================================================================
+  m_iconSvgData["keyframe"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<path fill='%COLOR%' d='M8 2l6 6-6 6-6-6z'/>"
+      "</svg>";
+
+  m_iconSvgData["keyframe-add"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<path fill='%COLOR%' d='M8 2l5 5-5 5-5-5z'/>"
+      "<path fill='%COLOR%' d='M12 10h2v2h2v2h-2v2h-2v-2h-2v-2h2z'/>"
+      "</svg>";
+
+  m_iconSvgData["keyframe-remove"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<path fill='%COLOR%' d='M8 2l5 5-5 5-5-5z'/>"
+      "<rect fill='%COLOR%' x='10' y='12' width='6' height='2'/>"
+      "</svg>";
+
+  m_iconSvgData["snap"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<path fill='%COLOR%' d='M8 1v3M8 12v3M1 8h3M12 8h3'/>"
+      "<rect fill='%COLOR%' x='5' y='5' width='6' height='6' rx='1'/>"
+      "</svg>";
+
+  m_iconSvgData["snap-off"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<rect fill='none' stroke='%COLOR%' stroke-width='1.5' x='5' y='5' width='6' height='6' rx='1'/>"
+      "<path fill='#e54d42' stroke='#e54d42' stroke-width='1.5' d='M3 3l10 10'/>"
+      "</svg>";
+
+  m_iconSvgData["loop"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<path fill='none' stroke='%COLOR%' stroke-width='1.5' "
+      "d='M12 4H5c-2 0-3 1-3 3v2c0 2 1 3 3 3h6'/>"
+      "<path fill='%COLOR%' d='M10 9l3 3 3-3z'/>"
+      "</svg>";
+
+  m_iconSvgData["easing-linear"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<rect fill='none' stroke='%COLOR%' stroke-width='1' x='2' y='2' width='12' height='12' rx='1'/>"
+      "<path fill='none' stroke='%COLOR%' stroke-width='1.5' d='M4 12L12 4'/>"
+      "</svg>";
+
+  m_iconSvgData["easing-ease-in"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<rect fill='none' stroke='%COLOR%' stroke-width='1' x='2' y='2' width='12' height='12' rx='1'/>"
+      "<path fill='none' stroke='%COLOR%' stroke-width='1.5' d='M4 12Q4 4 12 4'/>"
+      "</svg>";
+
+  m_iconSvgData["easing-ease-out"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<rect fill='none' stroke='%COLOR%' stroke-width='1' x='2' y='2' width='12' height='12' rx='1'/>"
+      "<path fill='none' stroke='%COLOR%' stroke-width='1.5' d='M4 12Q12 12 12 4'/>"
+      "</svg>";
+
+  m_iconSvgData["easing-ease-in-out"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<rect fill='none' stroke='%COLOR%' stroke-width='1' x='2' y='2' width='12' height='12' rx='1'/>"
+      "<path fill='none' stroke='%COLOR%' stroke-width='1.5' d='M4 12Q4 8 8 8T12 4'/>"
+      "</svg>";
+
+  // =========================================================================
+  // INSPECTOR ICONS (Properties, Types, Actions)
+  // =========================================================================
+  m_iconSvgData["property-vector"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<path fill='none' stroke='%COLOR%' stroke-width='1.5' d='M2 14L14 2'/>"
+      "<path fill='%COLOR%' d='M12 2l2 0 0 2-2 2-2-2z'/>"
+      "</svg>";
+
+  m_iconSvgData["property-color"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<circle fill='%COLOR%' cx='6' cy='6' r='4'/>"
+      "<circle fill='none' stroke='%COLOR%' stroke-width='1.5' cx='10' cy='10' r='4'/>"
+      "</svg>";
+
+  m_iconSvgData["property-number"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<text fill='%COLOR%' x='8' y='12' font-size='10' text-anchor='middle' "
+      "font-weight='bold'>#</text>"
+      "</svg>";
+
+  m_iconSvgData["property-text"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<text fill='%COLOR%' x='8' y='12' font-size='10' text-anchor='middle' "
+      "font-weight='bold'>T</text>"
+      "</svg>";
+
+  m_iconSvgData["property-bool"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<rect fill='none' stroke='%COLOR%' stroke-width='1.5' x='2' y='5' width='12' height='6' rx='3'/>"
+      "<circle fill='%COLOR%' cx='11' cy='8' r='2'/>"
+      "</svg>";
+
+  m_iconSvgData["property-link"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<path fill='none' stroke='%COLOR%' stroke-width='1.5' "
+      "d='M6 10l-1 1c-1.5 1.5-4 1.5-5.5 0s-1.5-4 0-5.5l1-1'/>"
+      "<path fill='none' stroke='%COLOR%' stroke-width='1.5' "
+      "d='M10 6l1-1c1.5-1.5 4-1.5 5.5 0s1.5 4 0 5.5l-1 1'/>"
+      "<path fill='none' stroke='%COLOR%' stroke-width='1.5' d='M6 10L10 6'/>"
+      "</svg>";
+
+  m_iconSvgData["property-reset"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<path fill='%COLOR%' d='M8 2C5.2 2 3 4.2 3 7h2l-3 4-3-4h2c0-3.9 3.1-7 7-7v2z'/>"
+      "<path fill='%COLOR%' d='M8 14c2.8 0 5-2.2 5-5h-2l3-4 3 4h-2c0 3.9-3.1 7-7 7v-2z'/>"
+      "</svg>";
+
+  m_iconSvgData["property-override"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<circle fill='%COLOR%' cx='8' cy='8' r='3'/>"
+      "<circle fill='none' stroke='%COLOR%' stroke-width='2' cx='8' cy='8' r='6'/>"
+      "</svg>";
+
+  // =========================================================================
+  // EXTERNAL/SYSTEM ICONS
+  // =========================================================================
+  m_iconSvgData["external-link"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<path fill='%COLOR%' d='M14 1h-5v2h2.6l-5.3 5.3 1.4 1.4L13 4.4V7h2V1z'/>"
+      "<path fill='%COLOR%' d='M13 14H2V3h5V1H1v14h13v-6h-1z'/>"
+      "</svg>";
+
+  m_iconSvgData["folder-open"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<path fill='%COLOR%' d='M14 5H7l-2-2H1v10h2l2-6h11l-2 6z'/>"
+      "</svg>";
+
+  m_iconSvgData["import"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<path fill='%COLOR%' d='M8 1l5 5-1.4 1.4L9 4.8V11H7V4.8L4.4 7.4 3 6z'/>"
+      "<rect fill='%COLOR%' x='2' y='13' width='12' height='2'/>"
+      "</svg>";
+
+  m_iconSvgData["export"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<path fill='%COLOR%' d='M8 10L3 5l1.4-1.4L7 6.2V0h2v6.2l2.6-2.6L13 5z'/>"
+      "<rect fill='%COLOR%' x='2' y='13' width='12' height='2'/>"
+      "</svg>";
+
+  m_iconSvgData["pin"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<path fill='%COLOR%' d='M10 1L6 5l-4-1-1 1 4 4-3 5 5-3 4 4 1-1-1-4 4-4z'/>"
+      "</svg>";
+
+  m_iconSvgData["unpin"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<path fill='%COLOR%' d='M10 1L6 5l-4-1-1 1 4 4-3 5 5-3 4 4 1-1-1-4 4-4z'/>"
+      "<path fill='#e54d42' stroke='#e54d42' stroke-width='1.5' d='M2 2l12 12'/>"
+      "</svg>";
+
+  // =========================================================================
+  // WELCOME PAGE ICONS
+  // =========================================================================
+  m_iconSvgData["welcome-new"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<rect fill='%COLOR%' x='2' y='2' width='12' height='12' rx='2'/>"
+      "<path fill='#1c2129' d='M8 5v6M5 8h6'/>"
+      "</svg>";
+
+  m_iconSvgData["welcome-open"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<path fill='%COLOR%' d='M14 4h-4.4l-1.3-1.3c-.2-.2-.5-.7-.7-.7H2c-.6 0-1 .4-1 "
+      "1v10c0 .6.4 1 1 1h12c.6 0 1-.4 1-1V5c0-.6-.4-1-1-1z'/>"
+      "<path fill='#1c2129' d='M3 8l4 4 4-4'/>"
+      "</svg>";
+
+  m_iconSvgData["welcome-examples"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<rect fill='%COLOR%' x='1' y='1' width='6' height='6' rx='1'/>"
+      "<rect fill='%COLOR%' x='9' y='1' width='6' height='6' rx='1'/>"
+      "<rect fill='%COLOR%' x='1' y='9' width='6' height='6' rx='1'/>"
+      "<rect fill='none' stroke='%COLOR%' stroke-width='1.5' x='9' y='9' width='6' height='6' rx='1'/>"
+      "</svg>";
+
+  m_iconSvgData["welcome-docs"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<path fill='%COLOR%' d='M13 1H5c-.6 0-1 .4-1 1v1H3c-.6 0-1 .4-1 1v10c0 .6.4 1 "
+      "1 1h8c.6 0 1-.4 1-1v-1h1c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1zM11 14H3V4h1v8c0 .6.4 "
+      "1 1 1h6v1zm2-2H5V2h8v10z'/>"
+      "<rect fill='#1c2129' x='6' y='4' width='6' height='1'/>"
+      "<rect fill='#1c2129' x='6' y='6' width='4' height='1'/>"
+      "<rect fill='#1c2129' x='6' y='8' width='5' height='1'/>"
+      "</svg>";
+
+  m_iconSvgData["welcome-recent"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<circle fill='none' stroke='%COLOR%' stroke-width='1.5' cx='8' cy='8' r='6'/>"
+      "<path fill='%COLOR%' d='M8 4v4l3 2'/>"
+      "</svg>";
+
+  // =========================================================================
+  // PROJECT TEMPLATE ICONS
+  // =========================================================================
+  m_iconSvgData["template-blank"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<rect fill='none' stroke='%COLOR%' stroke-width='1.5' x='2' y='2' width='12' height='12' rx='1'/>"
+      "</svg>";
+
+  m_iconSvgData["template-visual-novel"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<rect fill='%COLOR%' x='1' y='3' width='14' height='10' rx='1'/>"
+      "<circle fill='#1c2129' cx='5' cy='7' r='2'/>"
+      "<rect fill='#1c2129' x='3' y='10' width='4' height='2' rx='0.5'/>"
+      "<rect fill='#1c2129' x='9' y='5' width='4' height='1'/>"
+      "<rect fill='#1c2129' x='9' y='7' width='3' height='1'/>"
+      "</svg>";
+
+  m_iconSvgData["template-dating-sim"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<path fill='%COLOR%' d='M8 14l-5.5-5.5C1 7 1 5 2.5 3.5S6 2 7.5 3.5L8 4l.5-.5C10 "
+      "2 12 2 13.5 3.5S15 7 13.5 8.5L8 14z'/>"
+      "</svg>";
+
+  m_iconSvgData["template-mystery"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<circle fill='none' stroke='%COLOR%' stroke-width='1.5' cx='7' cy='7' r='5'/>"
+      "<path fill='%COLOR%' d='M11 11l4 4-1 1-4-4z'/>"
+      "<circle fill='%COLOR%' cx='7' cy='5' r='1'/>"
+      "<rect fill='%COLOR%' x='6.5' y='6.5' width='1' height='3'/>"
+      "</svg>";
+
+  m_iconSvgData["template-rpg"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<path fill='%COLOR%' d='M8 1l1 3h3l-2.5 2 1 3L8 7l-2.5 2 1-3L4 4h3z'/>"
+      "<rect fill='%COLOR%' x='3' y='11' width='10' height='3' rx='0.5'/>"
+      "<rect fill='#1c2129' x='4' y='12' width='3' height='1'/>"
+      "</svg>";
+
+  m_iconSvgData["template-horror"] =
+      "<svg viewBox='0 0 16 16'>"
+      "<circle fill='%COLOR%' cx='8' cy='8' r='6'/>"
+      "<circle fill='#1c2129' cx='6' cy='7' r='1.5'/>"
+      "<circle fill='#1c2129' cx='10' cy='7' r='1.5'/>"
+      "<path fill='#1c2129' d='M5 10c0 0 1.5 2 3 2s3-2 3-2H5z'/>"
+      "</svg>";
 }
 
 QIcon NMIconManager::getIcon(const QString &iconName, int size,

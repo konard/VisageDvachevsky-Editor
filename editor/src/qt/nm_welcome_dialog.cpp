@@ -474,151 +474,326 @@ void NMWelcomeDialog::onSearchTextChanged(const QString &text) {
 }
 
 void NMWelcomeDialog::styleDialog() {
-  // Apply stylesheet for welcome dialog
+  // Apply premium dark theme stylesheet for welcome dialog
+  // Using NovelMind design system colors for consistency
   setStyleSheet(R"(
+        /* ================================================================== */
+        /* Welcome Dialog - Premium Dark Theme                                 */
+        /* ================================================================== */
+
         QDialog {
-            background-color: #1a1a1a;
+            background-color: #0d1014;
         }
 
+        /* ------------------------------------------------------------------ */
+        /* Header Section                                                      */
+        /* ------------------------------------------------------------------ */
+
         #WelcomeHeader {
-            background-color: #232323;
-            border-bottom: 1px solid #404040;
+            background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                stop:0 #1c2129, stop:1 #14181e);
+            border-bottom: 1px solid #2a323e;
+            padding: 16px 24px;
         }
 
         #WelcomeTitle {
-            color: #e0e0e0;
+            color: #e8edf3;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
 
         #WelcomeVersion {
-            color: #a0a0a0;
-            font-size: 10pt;
+            color: #6c7684;
+            font-size: 11px;
+            background-color: #1c2129;
+            border: 1px solid #2a323e;
+            border-radius: 10px;
+            padding: 2px 8px;
+            margin-left: 8px;
         }
 
-        #WelcomeLeftPanel, #WelcomeCenterPanel, #WelcomeRightPanel {
-            background-color: #1a1a1a;
+        /* ------------------------------------------------------------------ */
+        /* Panel Sections                                                      */
+        /* ------------------------------------------------------------------ */
+
+        #WelcomeLeftPanel {
+            background-color: #14181e;
+            border-right: 1px solid #2a323e;
+        }
+
+        #WelcomeCenterPanel {
+            background-color: #0d1014;
+        }
+
+        #WelcomeRightPanel {
+            background-color: #14181e;
+            border-left: 1px solid #2a323e;
         }
 
         #WelcomeFooter {
-            background-color: #232323;
-            border-top: 1px solid #404040;
+            background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                stop:0 #14181e, stop:1 #1c2129);
+            border-top: 1px solid #2a323e;
+            padding: 12px 24px;
         }
+
+        /* ------------------------------------------------------------------ */
+        /* Section Titles                                                      */
+        /* ------------------------------------------------------------------ */
 
         #SectionTitle {
-            color: #e0e0e0;
-            margin-bottom: 8px;
+            color: #9aa7b8;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #2a323e;
         }
 
+        /* ------------------------------------------------------------------ */
+        /* Action Buttons                                                      */
+        /* ------------------------------------------------------------------ */
+
         #PrimaryActionButton {
-            background-color: #0078d4;
+            background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                stop:0 #4aabff, stop:1 #3b9eff);
             color: #ffffff;
             border: none;
-            border-radius: 4px;
-            padding: 12px;
-            font-weight: bold;
-            font-size: 11pt;
+            border-radius: 6px;
+            padding: 14px 20px;
+            font-weight: 600;
+            font-size: 12px;
         }
 
         #PrimaryActionButton:hover {
-            background-color: #1a88e0;
+            background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                stop:0 #5cb8ff, stop:1 #4aabff);
         }
 
         #PrimaryActionButton:pressed {
-            background-color: #006cbd;
+            background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                stop:0 #2882e0, stop:1 #3b9eff);
         }
 
         #SecondaryActionButton {
-            background-color: #2d2d2d;
-            color: #e0e0e0;
-            border: 1px solid #404040;
-            border-radius: 4px;
-            padding: 12px;
-            font-size: 10pt;
+            background-color: #1c2129;
+            color: #e8edf3;
+            border: 1px solid #2a323e;
+            border-radius: 6px;
+            padding: 14px 20px;
+            font-size: 11px;
         }
 
         #SecondaryActionButton:hover {
-            background-color: #383838;
-            border-color: #0078d4;
+            background-color: #262d38;
+            border-color: #3b9eff;
         }
 
         #SecondaryActionButton:pressed {
-            background-color: #232323;
+            background-color: #14181e;
         }
 
+        /* ------------------------------------------------------------------ */
+        /* Recent Projects List                                                */
+        /* ------------------------------------------------------------------ */
+
         #RecentProjectsList {
-            background-color: #2d2d2d;
-            border: 1px solid #404040;
-            border-radius: 4px;
-            color: #e0e0e0;
+            background-color: #1c2129;
+            border: 1px solid #2a323e;
+            border-radius: 8px;
+            color: #e8edf3;
+            padding: 4px;
         }
 
         #RecentProjectsList::item {
-            padding: 8px;
-            border-bottom: 1px solid #404040;
+            padding: 12px;
+            border-radius: 6px;
+            margin: 2px;
         }
 
         #RecentProjectsList::item:hover {
-            background-color: #383838;
+            background-color: #262d38;
         }
 
         #RecentProjectsList::item:selected {
-            background-color: #0078d4;
+            background-color: #1a3a5c;
+            border-left: 3px solid #3b9eff;
         }
 
-        #TemplateCard, #ResourceCard {
-            background-color: #2d2d2d;
-            border: 1px solid #404040;
-            border-radius: 6px;
+        /* ------------------------------------------------------------------ */
+        /* Template & Resource Cards                                           */
+        /* ------------------------------------------------------------------ */
+
+        #TemplateCard {
+            background-color: #1c2129;
+            border: 1px solid #2a323e;
+            border-radius: 10px;
         }
 
-        #TemplateCard:hover, #ResourceCard:hover {
-            background-color: #383838;
-            border-color: #0078d4;
+        #TemplateCard:hover {
+            background-color: #262d38;
+            border-color: #3b9eff;
+            border-width: 2px;
         }
 
-        #TemplateTitle, #ResourceTitle {
-            color: #e0e0e0;
+        #ResourceCard {
+            background-color: #1c2129;
+            border: 1px solid #2a323e;
+            border-radius: 8px;
         }
 
-        #TemplateDescription, #ResourceDescription {
-            color: #a0a0a0;
-            font-size: 9pt;
+        #ResourceCard:hover {
+            background-color: #262d38;
+            border-color: #3b9eff;
         }
+
+        #TemplateIcon {
+            background-color: #0d1014;
+            border-radius: 8px;
+            padding: 8px;
+        }
+
+        #TemplateTitle {
+            color: #e8edf3;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        #TemplateDescription {
+            color: #6c7684;
+            font-size: 11px;
+            line-height: 1.4;
+        }
+
+        #ResourceTitle {
+            color: #e8edf3;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        #ResourceDescription {
+            color: #6c7684;
+            font-size: 10px;
+        }
+
+        /* ------------------------------------------------------------------ */
+        /* Search Box                                                          */
+        /* ------------------------------------------------------------------ */
 
         QLineEdit {
-            background-color: #2d2d2d;
-            border: 1px solid #404040;
-            border-radius: 4px;
-            padding: 8px;
-            color: #e0e0e0;
+            background-color: #1c2129;
+            border: 1px solid #2a323e;
+            border-radius: 20px;
+            padding: 10px 16px;
+            color: #e8edf3;
+            font-size: 11px;
         }
 
         QLineEdit:focus {
-            border-color: #0078d4;
+            border-color: #3b9eff;
+            background-color: #262d38;
         }
+
+        QLineEdit::placeholder {
+            color: #4a525e;
+        }
+
+        /* ------------------------------------------------------------------ */
+        /* Scroll Areas                                                        */
+        /* ------------------------------------------------------------------ */
 
         QScrollArea {
             border: none;
             background-color: transparent;
         }
 
+        QScrollBar:vertical {
+            background-color: #14181e;
+            width: 8px;
+            border-radius: 4px;
+        }
+
+        QScrollBar::handle:vertical {
+            background-color: #3a4452;
+            border-radius: 4px;
+            min-height: 40px;
+        }
+
+        QScrollBar::handle:vertical:hover {
+            background-color: #4a5666;
+        }
+
+        QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+            height: 0;
+        }
+
+        /* ------------------------------------------------------------------ */
+        /* Footer Elements                                                     */
+        /* ------------------------------------------------------------------ */
+
         QCheckBox {
-            color: #e0e0e0;
+            color: #9aa7b8;
+            font-size: 11px;
+        }
+
+        QCheckBox::indicator {
+            width: 16px;
+            height: 16px;
+            border: 1px solid #2a323e;
+            border-radius: 4px;
+            background-color: #1c2129;
+        }
+
+        QCheckBox::indicator:checked {
+            background-color: #3b9eff;
+            border-color: #3b9eff;
+        }
+
+        QCheckBox::indicator:hover {
+            border-color: #3b9eff;
         }
 
         QPushButton {
-            background-color: #2d2d2d;
-            color: #e0e0e0;
-            border: 1px solid #404040;
-            border-radius: 4px;
-            padding: 8px 16px;
+            background-color: #1c2129;
+            color: #e8edf3;
+            border: 1px solid #2a323e;
+            border-radius: 6px;
+            padding: 8px 20px;
+            font-size: 11px;
         }
 
         QPushButton:hover {
-            background-color: #383838;
+            background-color: #262d38;
+            border-color: #3b9eff;
         }
 
         QPushButton:pressed {
-            background-color: #232323;
+            background-color: #14181e;
+        }
+
+        /* ------------------------------------------------------------------ */
+        /* Empty State                                                         */
+        /* ------------------------------------------------------------------ */
+
+        #EmptyStateWidget {
+            background-color: transparent;
+        }
+
+        #EmptyStateIcon {
+            color: #4a525e;
+        }
+
+        #EmptyStateText {
+            color: #6c7684;
+            font-size: 12px;
+        }
+
+        #EmptyStateHint {
+            color: #3b9eff;
+            font-size: 11px;
         }
     )");
 }

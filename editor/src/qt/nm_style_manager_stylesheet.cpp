@@ -19,33 +19,44 @@ QString NMStyleManager::colorToRgbaString(const QColor &color, int alpha) {
 
 QString NMStyleManager::getStyleSheet() const {
   const auto &p = m_palette;
+  const auto &pa = m_panelAccents;
 
-  // Generate comprehensive stylesheet for Unreal-like dark theme
+  // Generate comprehensive stylesheet for premium dark theme
+  // Design philosophy: Editor-grade UI that's both beautiful and functional
   return QString(R"(
 /* ========================================================================== */
-/* Global Styles                                                              */
+/* DESIGN SYSTEM: NovelMind Editor Visual Language                            */
+/* Version: 2.0 - Premium Dark Theme                                          */
 /* ========================================================================== */
+
+/* -------------------------------------------------------------------------- */
+/* Global Reset & Base Styles                                                 */
+/* -------------------------------------------------------------------------- */
 
 * {
     color: %1;
     background-color: %2;
     selection-background-color: %3;
-    selection-color: %4;
+    selection-color: %1;
+    outline: none;
 }
 
-/* ========================================================================== */
-/* QMainWindow                                                                */
-/* ========================================================================== */
+*:focus {
+    outline: none;
+}
+
+/* -------------------------------------------------------------------------- */
+/* QMainWindow - Application Shell                                            */
+/* -------------------------------------------------------------------------- */
 
 QMainWindow {
-    background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
-      stop:0 %5, stop:1 %2);
+    background: %5;
 }
 
 QMainWindow::separator {
     background-color: %6;
-    width: 3px;
-    height: 3px;
+    width: 2px;
+    height: 2px;
 }
 
 QMainWindow::separator:hover {
@@ -887,13 +898,431 @@ QListWidget#CommandPaletteList::item:selected {
     background-color: %3;
 }
 
+/* ========================================================================== */
+/* Panel-Specific Accent Styling (Visual Identity)                            */
+/* ========================================================================== */
+
+/* Scene View Panel - Teal accent */
+QDockWidget#SceneViewPanel {
+    border-left: 3px solid %16;
+}
+QDockWidget#SceneViewPanel::title {
+    border-left: 3px solid %16;
+}
+
+/* Story Graph Panel - Blue accent */
+QDockWidget#StoryGraphPanel {
+    border-left: 3px solid %17;
+}
+QDockWidget#StoryGraphPanel::title {
+    border-left: 3px solid %17;
+}
+
+/* Inspector Panel - Orange/Gold accent */
+QDockWidget#InspectorPanel {
+    border-left: 3px solid %18;
+}
+QDockWidget#InspectorPanel::title {
+    border-left: 3px solid %18;
+}
+
+/* Asset Browser Panel - Green accent */
+QDockWidget#AssetBrowserPanel {
+    border-left: 3px solid %19;
+}
+QDockWidget#AssetBrowserPanel::title {
+    border-left: 3px solid %19;
+}
+
+/* Script Editor Panel - Coral accent */
+QDockWidget#ScriptEditorPanel {
+    border-left: 3px solid %20;
+}
+QDockWidget#ScriptEditorPanel::title {
+    border-left: 3px solid %20;
+}
+
+/* Console Panel - Gray-blue accent */
+QDockWidget#ConsolePanel {
+    border-left: 3px solid %21;
+}
+QDockWidget#ConsolePanel::title {
+    border-left: 3px solid %21;
+}
+
+/* Timeline Panel - Purple accent */
+QDockWidget#TimelinePanel {
+    border-left: 3px solid %22;
+}
+QDockWidget#TimelinePanel::title {
+    border-left: 3px solid %22;
+}
+
+/* Curve Editor Panel - Pink accent */
+QDockWidget#CurveEditorPanel {
+    border-left: 3px solid %23;
+}
+QDockWidget#CurveEditorPanel::title {
+    border-left: 3px solid %23;
+}
+
+/* Voice Manager Panel - Cyan accent */
+QDockWidget#VoiceManagerPanel {
+    border-left: 3px solid %24;
+}
+QDockWidget#VoiceManagerPanel::title {
+    border-left: 3px solid %24;
+}
+
+/* Localization Panel - Yellow accent */
+QDockWidget#LocalizationPanel {
+    border-left: 3px solid %25;
+}
+QDockWidget#LocalizationPanel::title {
+    border-left: 3px solid %25;
+}
+
+/* Diagnostics Panel - Red accent */
+QDockWidget#DiagnosticsPanel {
+    border-left: 3px solid %26;
+}
+QDockWidget#DiagnosticsPanel::title {
+    border-left: 3px solid %26;
+}
+
+/* Hierarchy Panel - Lime accent */
+QDockWidget#HierarchyPanel {
+    border-left: 3px solid %27;
+}
+QDockWidget#HierarchyPanel::title {
+    border-left: 3px solid %27;
+}
+
+/* Scene Palette Panel - Lavender accent */
+QDockWidget#ScenePalettePanel {
+    border-left: 3px solid %28;
+}
+QDockWidget#ScenePalettePanel::title {
+    border-left: 3px solid %28;
+}
+
+/* Play Toolbar Panel - Bright green accent */
+QDockWidget#PlayToolbarPanel {
+    border-left: 3px solid %29;
+}
+QDockWidget#PlayToolbarPanel::title {
+    border-left: 3px solid %29;
+}
+
+/* ========================================================================== */
+/* Voice Manager Panel - Waveform & Recording Styling                         */
+/* ========================================================================== */
+
+QWidget#VoiceWaveform {
+    background-color: %5;
+    border: 1px solid %6;
+    border-radius: 4px;
+}
+
+QWidget#VoiceWaveform[recording="true"] {
+    border-color: %26;
+    background-color: rgba(229, 77, 66, 30);
+}
+
+QPushButton#RecordButton {
+    background-color: %26;
+    border: none;
+    border-radius: 20px;
+    min-width: 40px;
+    min-height: 40px;
+}
+
+QPushButton#RecordButton:hover {
+    background-color: #ef6c62;
+}
+
+QPushButton#RecordButton[recording="true"] {
+    background-color: #ff4444;
+    animation: pulse 1s infinite;
+}
+
+/* ========================================================================== */
+/* Timeline Panel - Track & Keyframe Styling                                  */
+/* ========================================================================== */
+
+QWidget#TimelineTrack {
+    background-color: %5;
+    border-bottom: 1px solid %6;
+}
+
+QWidget#TimelineTrack:alternate {
+    background-color: %10;
+}
+
+QWidget#TimelineKeyframe {
+    background-color: %3;
+    border: 2px solid %12;
+    border-radius: 3px;
+}
+
+QWidget#TimelineKeyframe:selected {
+    background-color: %25;
+    border-color: %25;
+}
+
+QWidget#TimelinePlayhead {
+    background-color: %26;
+    width: 2px;
+}
+
+/* ========================================================================== */
+/* Localization Panel - Translation Table Styling                             */
+/* ========================================================================== */
+
+QTableWidget#LocalizationTable {
+    background-color: %5;
+    gridline-color: %6;
+    alternate-background-color: %10;
+}
+
+QTableWidget#LocalizationTable::item {
+    padding: 4px 8px;
+}
+
+QTableWidget#LocalizationTable::item[missing="true"] {
+    background-color: rgba(245, 166, 35, 40);
+    color: %14;
+}
+
+QLabel#LocaleKey {
+    font-family: monospace;
+    color: %11;
+}
+
+/* ========================================================================== */
+/* Asset Browser - Grid & Preview Styling                                     */
+/* ========================================================================== */
+
+QListWidget#AssetGrid {
+    background-color: %5;
+    border: none;
+}
+
+QListWidget#AssetGrid::item {
+    background-color: %10;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    padding: 8px;
+    margin: 4px;
+}
+
+QListWidget#AssetGrid::item:hover {
+    background-color: %7;
+    border-color: %6;
+}
+
+QListWidget#AssetGrid::item:selected {
+    background-color: %7;
+    border-color: %3;
+    border-width: 2px;
+}
+
+QWidget#AssetThumbnail {
+    background-color: %2;
+    border-radius: 4px;
+}
+
+QLabel#AssetTypeBadge {
+    background-color: %3;
+    color: %1;
+    border-radius: 2px;
+    padding: 2px 4px;
+    font-size: 9px;
+    font-weight: 600;
+}
+
+QLabel#AssetErrorBadge {
+    background-color: %26;
+    color: %1;
+    border-radius: 2px;
+    padding: 2px 4px;
+    font-size: 9px;
+}
+
+/* ========================================================================== */
+/* Diagnostics Panel - Issue List Styling                                     */
+/* ========================================================================== */
+
+QTreeWidget#DiagnosticsTree {
+    background-color: %5;
+    border: none;
+}
+
+QTreeWidget#DiagnosticsTree::item {
+    padding: 4px 8px;
+    border-radius: 2px;
+}
+
+QTreeWidget#DiagnosticsTree::item[severity="error"] {
+    color: %26;
+}
+
+QTreeWidget#DiagnosticsTree::item[severity="warning"] {
+    color: %14;
+}
+
+QTreeWidget#DiagnosticsTree::item[severity="info"] {
+    color: %3;
+}
+
+/* ========================================================================== */
+/* Story Graph - Node Styling                                                 */
+/* ========================================================================== */
+
+QWidget#GraphNode {
+    background-color: %10;
+    border: 2px solid %6;
+    border-radius: 8px;
+}
+
+QWidget#GraphNode:hover {
+    border-color: %7;
+}
+
+QWidget#GraphNode:selected {
+    border-color: %3;
+    border-width: 2px;
+}
+
+QWidget#GraphNode[type="dialogue"] {
+    border-left: 4px solid %17;
+}
+
+QWidget#GraphNode[type="choice"] {
+    border-left: 4px solid %18;
+}
+
+QWidget#GraphNode[type="event"] {
+    border-left: 4px solid %22;
+}
+
+QWidget#GraphNode[type="condition"] {
+    border-left: 4px solid %25;
+}
+
+QWidget#GraphNode[type="start"] {
+    border-left: 4px solid %29;
+}
+
+QWidget#GraphNode[type="end"] {
+    border-left: 4px solid %26;
+}
+
+/* ========================================================================== */
+/* Curve Editor - Canvas Styling                                              */
+/* ========================================================================== */
+
+QWidget#CurveEditorCanvas {
+    background-color: %5;
+    border: 1px solid %6;
+}
+
+QWidget#CurvePoint {
+    background-color: %3;
+    border: 2px solid %1;
+    border-radius: 4px;
+}
+
+QWidget#CurvePoint:selected {
+    background-color: %25;
+    border-color: %25;
+}
+
+QWidget#CurveTangent {
+    background-color: %22;
+    border-radius: 3px;
+}
+
+/* ========================================================================== */
+/* Inspector Panel - Property Groups                                          */
+/* ========================================================================== */
+
+QGroupBox#InspectorPropertyGroup {
+    background-color: %10;
+    border: 1px solid %6;
+    border-radius: 6px;
+    margin-top: 8px;
+    padding: 8px;
+}
+
+QGroupBox#InspectorPropertyGroup::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    padding: 0 6px;
+    color: %11;
+    font-weight: 600;
+}
+
+QLabel#PropertyLabel {
+    color: %11;
+    min-width: 100px;
+}
+
+QLabel#PropertyValue {
+    color: %1;
+}
+
+QPushButton#ResetPropertyButton {
+    background-color: transparent;
+    border: none;
+    padding: 2px;
+}
+
+QPushButton#ResetPropertyButton:hover {
+    background-color: %7;
+    border-radius: 2px;
+}
+
+/* ========================================================================== */
+/* Empty State Styling                                                        */
+/* ========================================================================== */
+
+QLabel#EmptyStateTitle {
+    color: %1;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+QLabel#EmptyStateDescription {
+    color: %11;
+    font-size: 11px;
+}
+
+QLabel#EmptyStateIcon {
+    color: %8;
+}
+
+/* ========================================================================== */
+/* Drag & Drop Feedback                                                       */
+/* ========================================================================== */
+
+QWidget[dragOver="true"] {
+    border: 2px dashed %3;
+    background-color: rgba(59, 158, 255, 30);
+}
+
+QFrame#DropIndicator {
+    background-color: %3;
+    border-radius: 2px;
+}
+
 )")
       .arg(colorToStyleString(p.textPrimary))    // %1
       .arg(colorToStyleString(p.bgDark))         // %2
       .arg(colorToStyleString(p.accentPrimary))  // %3
       .arg(colorToStyleString(p.textPrimary))    // %4
       .arg(colorToStyleString(p.bgDarkest))      // %5
-      .arg(colorToStyleString(p.borderLight))    // %6
+      .arg(colorToStyleString(p.borderDefault))  // %6 - Changed from borderLight
       .arg(colorToStyleString(p.bgLight))        // %7
       .arg(colorToStyleString(p.textDisabled))   // %8
       .arg(colorToStyleString(p.accentActive))   // %9
@@ -902,7 +1331,22 @@ QListWidget#CommandPaletteList::item:selected {
       .arg(colorToStyleString(p.accentHover))    // %12
       .arg(colorToStyleString(p.textSecondary))  // %13
       .arg(colorToStyleString(p.warning))        // %14
-      .arg(colorToStyleString(p.success));       // %15
+      .arg(colorToStyleString(p.success))        // %15
+      // Panel accent colors
+      .arg(colorToStyleString(pa.sceneView))     // %16
+      .arg(colorToStyleString(pa.storyGraph))    // %17
+      .arg(colorToStyleString(pa.inspector))     // %18
+      .arg(colorToStyleString(pa.assetBrowser))  // %19
+      .arg(colorToStyleString(pa.scriptEditor))  // %20
+      .arg(colorToStyleString(pa.console))       // %21
+      .arg(colorToStyleString(pa.timeline))      // %22
+      .arg(colorToStyleString(pa.curveEditor))   // %23
+      .arg(colorToStyleString(pa.voiceManager))  // %24
+      .arg(colorToStyleString(pa.localization))  // %25
+      .arg(colorToStyleString(pa.diagnostics))   // %26
+      .arg(colorToStyleString(pa.hierarchy))     // %27
+      .arg(colorToStyleString(pa.scenePalette))  // %28
+      .arg(colorToStyleString(pa.playToolbar));  // %29
 }
 
 } // namespace NovelMind::editor::qt
